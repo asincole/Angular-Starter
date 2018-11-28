@@ -10,7 +10,8 @@
 
       <li nz-submenu *ngIf="auth.isAuthenticated()">
         <span title>
-          <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+         <!-- <img src="{{profile?.picture}}" class="avatar" alt="avatar"> -->
+          <i nz-icon type="user" theme="outline"></i>
           <span class="nav-text">
             {{ profile?.nickname }}
           </span>
