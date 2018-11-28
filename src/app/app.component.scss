@@ -1,0 +1,18 @@
+.ant-layout.ant-layout-has-sider {
+    min-height: 100vh;
+}
+.logo {
+    //   width: 120px;
+      height: 31px;
+      background: rgba(255,255,255,.2);
+      margin: 16px 24px 16px 0;
+
+    img{
+        height: 100%;
+    }
+}
+
+.ant-layout-header {
+    height: 30px;
+    line-height: 30px;
+}
