@@ -8,14 +8,33 @@
     <ul nz-menu [nzTheme]="'light'" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
 
 
-      <li nz-submenu>
-        <span title><i nz-icon type="user" theme="outline"></i><span class="nav-text">Team</span></span>
+      <li nz-submenu *ngIf="auth.isAuthenticated()">
+        <span title>
+          <img src="{{profile?.picture}}" class="avatar" alt="avatar">
+          <span class="nav-text">
+            {{ profile?.nickname }}
+          </span>
+        </span>
         <ul>
-          <li nz-menu-item><i nz-icon type="logout" theme="outline"></i>Logout</li>
-          <li nz-menu-item><i nz-icon type="profile" theme="outline"></i> Profile</li>
+          <li nz-menu-item>
+            <a [routerLink]="[ '/profile' ]" routerLinkActive="active">
+              <i nz-icon type="profile" theme="outline"></i> Profile
+            </a>
+          </li>
+          <li nz-menu-item (click)="auth.logout()">
+            <i nz-icon type="logout" theme="outline"></i>
+            Logout
+          </li>
         </ul>
       </li>
-      <li nz-menu-item><span><i nz-icon type="login" theme="outline"></i><span class="nav-text">Login</span></span></li>
+      <li nz-menu-item *ngIf="!auth.isAuthenticated()">
+        <span (click)="login()">
+          <i nz-icon type="login" theme="outline"></i>
+          <span class="nav-text">
+            Login
+          </span>
+        </span>
+      </li>
     </ul>
   </nz-sider>
   <nz-layout>
@@ -23,7 +42,7 @@
       <i class="trigger" nz-icon [type]="isCollapsed?'menu-unfold':'menu-fold'" (click)="isCollapsed=!isCollapsed"></i>
 
     </nz-header>
-    <nz-content>
+    <nz-content style="padding: 10px">
       <router-outlet></router-outlet>
 
     </nz-content>
