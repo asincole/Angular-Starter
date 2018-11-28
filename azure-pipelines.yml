@@ -8,32 +8,29 @@ steps:
   inputs:
     versionSpec: '10.x'
 
-- task: knom.regexreplace-task.regex-replace.RegexReplace@3
-  displayName: 'RegEx Find & Replace'
+- task: kasunkodagoda.regex-match-replace.regex-match-replace.RegExMatchReplace@2
+  displayName: 'RegEx Match & Replace'
   inputs:
-    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
+    PathToFile: 'src/app/services/auth0-congif.ts'
+    RegEx: clientIDValue
+    IgnoreCase: true
+    ValueToReplace: '$(clientIDValue)'
 
-    FindRegex: clientIDValue
-
-    ReplaceRegex: '$(clientIDValue)'
-
-- task: knom.regexreplace-task.regex-replace.RegexReplace@3
-  displayName: 'RegEx Find & Replace'
+- task: kasunkodagoda.regex-match-replace.regex-match-replace.RegExMatchReplace@2
+  displayName: 'RegEx Match & Replace'
   inputs:
-    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
+    PathToFile: 'src/app/services/auth0-congif.ts'
+    RegEx: domainValue
+    IgnoreCase: true
+    ValueToReplace: '$(domainValue)'
 
-    FindRegex: domainValue
-
-    ReplaceRegex: '$(domainValue)'
-
-- task: knom.regexreplace-task.regex-replace.RegexReplace@3
-  displayName: 'RegEx Find & Replace'
+- task: kasunkodagoda.regex-match-replace.regex-match-replace.RegExMatchReplace@2
+  displayName: 'RegEx Match & Replace'
   inputs:
-    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
-
-    FindRegex: callbackURLValue
-
-    ReplaceRegex: '$(callbackURLValue)'
+    PathToFile: 'src/app/services/auth0-congif.ts'
+    RegEx: callbackURLValue
+    IgnoreCase: true
+    ValueToReplace: '$(callbackURLValue)'
 
 - script: |
     npm install
