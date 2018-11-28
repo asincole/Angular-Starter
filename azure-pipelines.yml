@@ -9,9 +9,9 @@ steps:
     versionSpec: '10.x'
   
 - bash: |
-    sed -i 's/clientIDValue/$(clientIDValue)/g' /src/app/services/auth0-congif.ts
-    sed -i 's/domainValue/$(domainValue)/g' /src/app/services/auth0-congif.ts
-    sed -i 's/callbackURLValue/$(callbackURLValue)/g' /src/app/services/auth0-congif.ts
+    sed -i 's/clientIDValue/$(clientIDValue)/g' ./src/app/services/auth0-congif.ts
+    sed -i 's/domainValue/$(domainValue)/g' ./src/app/services/auth0-congif.ts
+    sed -i 's/callbackURLValue/$(callbackURLValue)/g' ./src/app/services/auth0-congif.ts
     displayName: Replacing auth0 variables
 
 - script: |
