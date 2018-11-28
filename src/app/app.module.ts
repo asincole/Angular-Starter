@@ -11,14 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+// import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavMenuComponent
+    AppComponent
+    // NavMenuComponent
   ],
   imports: [
     BrowserModule,
