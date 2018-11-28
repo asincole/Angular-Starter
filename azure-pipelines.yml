@@ -8,12 +8,15 @@ steps:
   inputs:
     versionSpec: '10.x'
   
+- bash: |
+    sed -i 's/clientIDValue/$(clientIDValue)/g' /src/app/services/auth0-congif.ts
+    sed -i 's/domainValue/$(domainValue)/g' /src/app/services/auth0-congif.ts
+    sed -i 's/callbackURLValue/$(callbackURLValue)/g' /src/app/services/auth0-congif.ts
+    displayName: Replacing auth0 variables
+
 - script: |
     npm install
     npm install -g @angular/cli
-    sed -i 's/clientIDValue/$(clientIDValue)/g' src/app/services/auth0-congif.ts
-    sed -i 's/domainValue/$(domainValue)/g' src/app/services/auth0-congif.ts
-    sed -i 's/callbackURLValue/$(callbackURLValue)/g' src/app/services/auth0-congif.ts
     ng build --prod 
 
 # Zip build folder up to prepare for azure web app deployment
