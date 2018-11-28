@@ -7,12 +7,33 @@ steps:
 # Specify the ode version you need for your app here
   inputs:
     versionSpec: '10.x'
-  
-- bash: |
-    sed -i 's/clientIDValue/$(clientIDValue)/g' ./src/app/services/auth0-congif.ts
-    sed -i 's/domainValue/$(domainValue)/g' ./src/app/services/auth0-congif.ts
-    sed -i 's/callbackURLValue/$(callbackURLValue)/g' ./src/app/services/auth0-congif.ts
-    displayName: Replacing auth0 variables
+
+- task: knom.regexreplace-task.regex-replace.RegexReplace@3
+  displayName: 'RegEx Find & Replace'
+  inputs:
+    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
+
+    FindRegex: clientIDValue
+
+    ReplaceRegex: '$(clientIDValue)'
+
+- task: knom.regexreplace-task.regex-replace.RegexReplace@3
+  displayName: 'RegEx Find & Replace'
+  inputs:
+    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
+
+    FindRegex: domainValue
+
+    ReplaceRegex: '$(domainValue)'
+
+- task: knom.regexreplace-task.regex-replace.RegexReplace@3
+  displayName: 'RegEx Find & Replace'
+  inputs:
+    InputSearchPattern: '.\src\app\services\auth0-congif.ts'
+
+    FindRegex: callbackURLValue
+
+    ReplaceRegex: '$(callbackURLValue)'
 
 - script: |
     npm install
