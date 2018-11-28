@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   triggerTemplate = null;
   @ViewChild('trigger') customTrigger: TemplateRef<void>;
 
-  constructor(private auth: AuthService) {
+  constructor(public auth: AuthService) {
     auth.handleAuthentication();
   }
 
