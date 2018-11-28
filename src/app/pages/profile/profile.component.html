@@ -1,0 +1,19 @@
+<div nz-row nzType="flex" nzJustify="center">
+  <div nz-col nzMd="8">
+    <nz-card nzHoverable style="width:240px" [nzCover]="coverTemplate">
+      <nz-card-meta nzTitle="{{ profile?.nickname }}" nzDescription="{{ profile?.given_name }} {{ profile?.family_name }}"></nz-card-meta>
+    </nz-card>
+    <ng-template #coverTemplate>
+      <img alt="avatar" src="{{profile?.picture}}" />
+    </ng-template>
+  </div>
+  <div nz-col nzMd="16">
+    <nz-divider nzText="Welcome {{ profile?.nickname }}" style="text-transform: capitalize;"></nz-divider>
+    <h4>Okay this is just dummy data, but here are a few things I think I know about you</h4>
+    <ul>
+      <!-- <li>You are from {{ profile?.https://example.com/country }}</li> -->
+      <li>You are a {{ profile?.gender }}. Omg, did I just assume your gender?</li>
+      <!-- {{profile |json}} -->
+    </ul>
+  </div>
+</div>
